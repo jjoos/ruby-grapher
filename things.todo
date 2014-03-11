@@ -1,12 +1,14 @@
 Graphing ruby projects:
   Features:
-    ☐ return dependencies with two positions
-    ☐ what to do with dependecies in blocks
-    ☐ Keep track of the current position in the application
-    ☐ Match the current point to gem/application/core
-    ☐ Save a file that's a list of all transitions between points
+☐ return dependencies with two positions
+☐ what to do with dependecies in blocks
+☐ Keep track of the current position in the application
+☐ Match the current point to gem/application/core
+☐ Save a file that's a list of all transitions between points
   Testing:
-    ☐ Run it on a bigger code base with for example capybara tests.
+☐ Run it on a bigger code base with for example capybara tests.
+☐ add tests for dynamic created classes, modules and methods
+☐ add tests for in eval created classes, modules and methods
 
 
 I want to graph dependecies between the application and gems.

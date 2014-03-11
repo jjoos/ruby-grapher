@@ -31,7 +31,7 @@ class Tracer
 
       # register dependency
       if [:call, :c_call].include?(tp.event) && location_stack.length > 1
-         calls << ({
+        calls << ({
           from: location_stack[-2],
           to: location_stack[-1]
         })
@@ -40,8 +40,7 @@ class Tracer
 
     tracer.enable
     begin
-      yield
-    ensure
+      yield ensure
       tracer.disable
     end
 
