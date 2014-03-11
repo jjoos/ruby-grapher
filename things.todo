@@ -1,10 +1,11 @@
 Graphing ruby projects:
   Features:
-☐ return dependencies with two positions
-☐ what to do with dependecies in blocks
-☐ Keep track of the current position in the application
-☐ Match the current point to gem/application/core
-☐ Save a file that's a list of all transitions between points
+  ✔ return dependencies with two positions @done (14-03-11 22:04)
+  ☐ what to do with dependecies in blocks
+  ✔ Keep track of the current position in the application @done (14-03-11 22:05)
+  ☐ Match the current point to gem/application/core
+  ☐ Save a file that's a list of all transitions between points
+  ✔ Keep count of how many time a call takes place @done (14-03-11 22:34)
   Testing:
 ☐ Run it on a bigger code base with for example capybara tests.
 ☐ add tests for dynamic created classes, modules and methods

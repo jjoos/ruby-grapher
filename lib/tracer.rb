@@ -1,6 +1,8 @@
+require 'call_register.rb'
+
 class Tracer
   def self.record &block
-    calls = []
+    calls = CallRegister.new
     location_stack = []
     tracer = TracePoint.new(:call, :c_call, :b_call, :b_return, :return, :raise) do |tp|
       called_class = ''
@@ -31,7 +33,7 @@ class Tracer
 
       # register dependency
       if [:call, :c_call].include?(tp.event) && location_stack.length > 1
-        calls << ({
+        calls.add({
           from: location_stack[-2],
           to: location_stack[-1]
         })
@@ -43,6 +45,8 @@ class Tracer
       yield ensure
       tracer.disable
     end
+
+    calls.finalize
 
     calls
   end
