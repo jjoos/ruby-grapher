@@ -1,7 +1,13 @@
 require 'rspec'
 require_relative '../lib/tracer.rb'
 
-def test_method
+def test_function
+  true
+end
+
+def test_function_that_accepts_block &block
+  block.call
+
   true
 end
 
@@ -35,6 +41,11 @@ module TestModule
   end
 end
 
+def recursive_function(n)
+  return if n.zero?
+  recursive_function(n-1)
+end
+
 describe '#record' do
   context 'empty block' do
     it 'no calls' do
@@ -49,19 +60,19 @@ describe '#record' do
   context 'simpel method' do
     it 'simple call' do
       register = Tracer.record do
-        test_method
+        test_function
       end
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 51
+            lineno: 63
           },
           to: {
             klass: 'Object',
-            method: :test_method,
+            method: :test_function,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
             lineno: 4
           },
@@ -71,19 +82,19 @@ describe '#record' do
 
     it 'two calls' do
       register = Tracer.record do
-        test_method; test_method
+        test_function; test_function
       end
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 73
+            lineno: 85
           },
           to: {
             klass: 'Object',
-            method: :test_method,
+            method: :test_function,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
             lineno: 4
           },
@@ -101,15 +112,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 98
+            lineno: 110
           }, to: {
             klass: 'TestClass',
             method: :instance_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 9
+            lineno: 15
           },
           count: 1
       }]
@@ -123,15 +134,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 120
+            lineno: 132
           }, to: {
             klass: 'TestClass',
             method: :instance_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 9
+            lineno: 15
           },
           count: 2
       }]
@@ -146,15 +157,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 143
+            lineno: 155
           }, to: {
             klass: 'TestClass',
             method: :class_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 13
+            lineno: 19
           },
           count: 1
       }]
@@ -167,15 +178,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 164
+            lineno: 176
           }, to: {
             klass: 'TestClass',
             method: :class_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 13
+            lineno: 19
           },
           count: 2
       }]
@@ -192,15 +203,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 189
+            lineno: 201
           }, to: {
             klass: 'TestModule',
             method: :instance_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 19
+            lineno: 25
           },
           count: 1
       }]
@@ -215,15 +226,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 212
+            lineno: 224
           }, to: {
             klass: 'TestModule',
             method: :instance_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 19
+            lineno: 25
           },
           count: 2
       }]
@@ -238,15 +249,15 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 235
+            lineno: 247
           }, to: {
             klass: 'TestModule',
             method: :class_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 23
+            lineno: 29
           },
         count: 1
       }]
@@ -259,17 +270,64 @@ describe '#record' do
 
       expect(register.calls).to eq [{
           from: {
-            klass: ':block',
+            klass: nil,
             method: nil,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 256
+            lineno: 268
           }, to: {
             klass: 'TestModule',
             method: :class_method,
             path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
-            lineno: 23
+            lineno: 29
           },
-        count: 2
+          count: 2
+      }]
+    end
+  end
+
+  context 'recursive function' do
+    it 'gets called three times' do
+      register = Tracer.record do
+        recursive_function 3
+      end
+
+      expect(register.calls).to eq [{
+          from: {
+            klass: nil,
+            method: nil,
+            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            lineno: 291
+          }, to: {
+            klass: "Object",
+            method: :recursive_function,
+            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            lineno: 44
+          },
+          count: 1
+        }, {
+          from: {
+            klass: "Object",
+            method: :recursive_function,
+            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            lineno: 45
+          }, to: {
+            klass: "Fixnum",
+            method: :zero?
+          },
+          count: 4
+        }, {
+          from: {
+            klass: "Object",
+            method: :recursive_function,
+            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            lineno: 46
+          }, to: {
+            klass: "Object",
+            method: :recursive_function,
+            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            lineno: 44
+          },
+          count: 3
       }]
     end
   end
