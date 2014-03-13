@@ -67,13 +67,13 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 63
           },
           to: {
             klass: 'Object',
             method: :test_function,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 4
           },
           count: 1
@@ -89,13 +89,13 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 85
           },
           to: {
             klass: 'Object',
             method: :test_function,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 4
           },
           count: 2
@@ -114,12 +114,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 110
           }, to: {
             klass: 'TestClass',
             method: :instance_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 15
           },
           count: 1
@@ -136,12 +136,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 132
           }, to: {
             klass: 'TestClass',
             method: :instance_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 15
           },
           count: 2
@@ -159,12 +159,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 155
           }, to: {
             klass: 'TestClass',
             method: :class_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 19
           },
           count: 1
@@ -180,12 +180,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 176
           }, to: {
             klass: 'TestClass',
             method: :class_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 19
           },
           count: 2
@@ -205,12 +205,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 201
           }, to: {
             klass: 'TestModule',
             method: :instance_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 25
           },
           count: 1
@@ -228,12 +228,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 224
           }, to: {
             klass: 'TestModule',
             method: :instance_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 25
           },
           count: 2
@@ -251,12 +251,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 247
           }, to: {
             klass: 'TestModule',
             method: :class_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 29
           },
         count: 1
@@ -272,12 +272,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 268
           }, to: {
             klass: 'TestModule',
             method: :class_method,
-            path: '/Users/jan/dev/ruby_grapher/spec/call_spec.rb',
+            path: '/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb',
             lineno: 29
           },
           count: 2
@@ -295,12 +295,12 @@ describe '#record' do
           from: {
             klass: nil,
             method: nil,
-            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            path: "/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb",
             lineno: 291
           }, to: {
             klass: "Object",
             method: :recursive_function,
-            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            path: "/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb",
             lineno: 44
           },
           count: 1
@@ -308,7 +308,7 @@ describe '#record' do
           from: {
             klass: "Object",
             method: :recursive_function,
-            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            path: "/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb",
             lineno: 45
           }, to: {
             klass: "Fixnum",
@@ -319,12 +319,12 @@ describe '#record' do
           from: {
             klass: "Object",
             method: :recursive_function,
-            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            path: "/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb",
             lineno: 46
           }, to: {
             klass: "Object",
             method: :recursive_function,
-            path: "/Users/jan/dev/ruby_grapher/spec/call_spec.rb",
+            path: "/Users/jan/dev/ruby_grapher/spec/tracer_spec.rb",
             lineno: 44
           },
           count: 3
